@@ -1,0 +1,141 @@
+-- CREATE TABLE CALLED PERSON --
+/* CREATE TABLE Person (
+  ID integer primary key autoincrement,
+  Name varchar(30),
+  Age integer,
+  Height_cm integer,
+  City varChar(20),
+  Favorite_Color varChar(20)); */
+
+-- INSERT DATA --
+/* INSERT INTO Person (Name, Age, Height_cm, City, Favorite_Color)
+VALUES ('Larry', 26, 200, 'Dallas', 'Cyan'),
+('Jin', 26, 199, 'Dallas', 'Blue'),
+('Kathy', 30, 170, 'New York City', 'Purple'),
+('Karen', 32, 150, 'San Francisco', 'Red'),
+('Steven', 27, 208, 'Houston', 'Blue'); */
+
+-- SHOW ALL DATA --
+/* SELECT * FROM Person; */
+
+-- LIST BY TALLEST --
+/* SELECT * FROM Person ORDER BY Height_cm DESC; */
+
+-- LIST BY SHORTEST --
+/* SELECT * FROM Person ORDER BY Height_cm ASC; */
+
+-- LIST BY OLDEST --
+/* SELECT * FROM Person ORDER BY age DESC; */
+
+-- LIST OLDER BY 20 --
+/* SELECT * FROM Person WHERE age > 20; */
+
+-- LIST ALL PEOPLE AGE 18 --
+/* SELECT * FROM Person WHERE age = 18; */
+
+-- LIST PEOPLE YOUNGER THAN 20 AND OLDER THAN 30 --
+/* SELECT * FROM Person WHERE age < 20 OR age > 30; */
+
+-- LIST PEOPLE THAT ARE NOT 27 --
+/* SELECT * FROM Person WHERE age != 27; */
+
+-- LIST PEOPLE WHO DO NOT HAVE RED AS FAVORITE COLOR --
+/* SELECT * FROM Person WHERE Favorite_Color != 'Red'; */
+
+-- LIST PEOPLE WHO DO NOT PREFER RED AND BLUE --
+/* SELECT * FROM Person WHERE Favorite_Color NOT IN ('Red', 'Blue'); */
+
+-- LIST PEOPLE WHO LIKE ORANGE OR GREEN --
+/* SELECT * FROM Person WHERE Favorite_Color IN ('Orange', 'Green'); */
+
+-- LIST PEOPLE WHO PREFER ORANGE, GREEN, OR BLUE ---
+/* SELECT * FROM Person WHERE Favorite_Color IN ('Orange', 'Green', 'Blue'); */
+
+-- LIST PEOPLE WHO PREFER YELLOW OR PURPLE --
+/* SELECT * FROM Person WHERE Favorite_Color IN ('Yellow', 'Purple'); */
+
+-- CREATE TABLE CALLED ORDERS --
+/* CREATE TABLE Orders (
+  PersonID integer,
+  ProductName varChar(40),
+  ProductPrice float,
+  Quantity integer); */
+  
+-- MAKE 5 ORDERS FOR AT LEAST 2 PEOPLE --
+/* INSERT INTO Orders (PersonID, ProductName, ProductPrice, Quantity)
+VALUES (2, 'XBOX', 259.99, 1),
+(1, 'PS4', 299.99, 3),
+(2, 'XBOX', 199.29, 2),
+(3, 'Switch', 270.01, 1),
+(1, 'Switch', 310.99, 2); */
+  
+-- SELECT ALL ORDERS --
+/* SELECT * FROM Orders; */
+
+-- CALCULATE TOTAL # OF PRODUCTS --
+/* SELECT SUM(Quantity) FROM Orders; */
+
+-- CALCULATE TOTAL ORDER PRICE --
+/* SELECT ProductPrice * Quantity FROM Orders; */
+
+-- CALCULATE TOTAL ORDER PRICE FOR A SINGLE PERSON --
+/* SELECT ROUND(SUM(ProductPrice * Quantity), 2) FROM Orders WHERE PersonID = 2; */
+
+-- ADD 3 ARTISTS TO ARTIST TABLE --
+/* INSERT INTO artist (ArtistID, Name)
+VALUES (276, 'Macklemoore'), (277, 'Lil'' Wayne'), (278, 'Galantis'); */
+ 
+-- SELECT 10 ARTISTS IN REVERSE ALPHABETICAL ORDER --
+/* SELECT * FROM Artist ORDER BY Name DESC LIMIT 10; */
+
+-- SELECT 5 ARTISTS IN ALPHABETICAL ORDER --
+/* SELECT * FROM Artist ORDER BY Name LIMIT 5; */
+
+-- SELECT ALL ARTISTS WHOSE NAMES START WITH 'BLACK' --
+/* SELECT * FROM Artist WHERE Name LIKE 'Black%'; */
+
+-- SELECT ALL ARTISTS WHOSE NAMES CONTAIN 'BLACK' --
+/* SELECT * FROM Artist WHERE Name LIKE '%black%'; */
+
+-- SELECT FIRST AND LAST NAME OF EMPLOYEES WHO LIVE IN CALGARY --
+/* SELECT FirstName, LastName FROM Employee WHERE City = 'Calgary'; */
+
+-- FIND FIRST AND LAST NAME AND BIRTHDAY OF YOUNGEST EMPLOYEE --
+/* SELECT FirstName, LastName FROM Employee ORDER BY BirthDate DESC LIMIT 1; */
+
+-- FIND FIRST AND LAST NAME AND BIRTHDAY OF OLDEST EMPLOYEE --
+/* SELECT FirstName, LastName FROM Employee ORDER BY BirthDate LIMIT 1; */
+
+-- FIND EVERYONE WHO REPORTS TO NANCY EDWARDS --
+/* SELECT * FROM Employee WHERE ReportsTo = 2; */
+
+-- FIND OUT HOW MANY EMPLOYEES LIVE IN LETHBRIDGE --
+/* SELECT COUNT(*) AS Lethbridge_Employees FROM Employee WHERE City = 'Lethbridge'; */
+
+SELECT * FROM Invoice LIMIT 5;
+-- FIND HOW MANY ORDERS WERE MADE FROM THE USA --
+/* SELECT COUNT(*) AS USA_Orders FROM Invoice WHERE BillingCountry = 'USA'; */
+
+-- FIND LARGET ORDER TOTAL AMOUNT --
+/* SELECT Total FROM Invoice ORDER BY Total DESC LIMIT 1; */
+
+-- FIND SMALLEST ORDER TOTAL AMOUNT --
+/* SELECT Total FROM Invoice ORDER BY Total LIMIT 1; */
+
+-- FIND ALL ORDERS BIGGER THAN $5 --
+/* SELECT * FROM Invoice WHERE Total > 5; */
+
+-- FIND ALL ORDERS SMALLER THAN $5 --
+/* SELECT * FROM Invoice WHERE Total < 5; */
+
+-- COUNT ORDERS SMALLER THAN $5 --
+/* SELECT COUNT(*) AS small_orders FROM Invoice WHERE Total < 5; */
+
+-- COUNT ORDERS FROM CA, TX, OR AZ --
+/* SELECT COUNT(*) FROM Invoice WHERE BillingState IN ('CA', 'TX', 'AZ'); */
+
+-- GET AVERAGE TOTAL OF ORDERS --
+/* SELECT AVG(Total) AS avg_total FROM Invoice; */
+
+-- GET TOTAL SUM OF ALL ORDERS --
+/* SELECT SUM(Total) AS all_orders_total FROM Invoice; */
